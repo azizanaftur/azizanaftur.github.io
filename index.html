@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+ <!DOCTYPE html>
 <html lang="id">
 <head>
 <meta charset="UTF-8">
@@ -16,13 +16,14 @@
 }
 
 html{
-    scroll-behavior:smooth;
+    scroll-behavior:auto;
 }
 
 body{
     font-family:'Poppins',sans-serif;
     color:#29475d;
     overflow-x:hidden;
+
     background:
         linear-gradient(
             180deg,
@@ -35,7 +36,7 @@ body{
 }
 
 /* =====================================================
-   SKY BACKGROUND
+   SKY
 ===================================================== */
 
 .sky{
@@ -50,10 +51,13 @@ body{
 
 .sun{
     position:absolute;
+
     width:420px;
     height:420px;
+
     right:-80px;
     top:-170px;
+
     border-radius:50%;
 
     background:rgba(255,255,255,.95);
@@ -79,52 +83,57 @@ body{
     }
 }
 
-/* LIGHT RAYS */
+/* LIGHT */
 
 .light{
     position:absolute;
+
     width:550px;
     height:1000px;
+
     top:-400px;
     right:80px;
 
-    background:linear-gradient(
-        180deg,
-        rgba(255,255,255,.35),
-        transparent
-    );
+    background:
+        linear-gradient(
+            180deg,
+            rgba(255,255,255,.35),
+            transparent
+        );
 
     filter:blur(35px);
+
     transform:rotate(25deg);
+
     animation:lightMove 8s ease-in-out infinite;
 }
 
 @keyframes lightMove{
     0%,100%{
         opacity:.35;
-        transform:rotate(25deg) translateX(0);
     }
 
     50%{
         opacity:.65;
-        transform:rotate(25deg) translateX(-50px);
     }
 }
 
 /* =====================================================
-   CLOUD SYSTEM
+   CLOUDS
 ===================================================== */
 
 .cloud{
     position:absolute;
+
     height:60px;
+
     border-radius:100px;
 
     background:
         linear-gradient(
             180deg,
-            rgba(255,255,255,.95),
-            rgba(238,249,255,.75)
+            rgba(255,255,255,.97),
+            rgba(238,249,255,.70)
         );
 
     filter:blur(2px);
@@ -137,14 +146,18 @@ body{
 .cloud::before,
 .cloud::after{
     content:"";
+
     position:absolute;
+
     border-radius:50%;
+
     background:inherit;
 }
 
 .cloud::before{
     width:100px;
     height:100px;
+
     left:30px;
     bottom:5px;
 }
@@ -152,75 +165,73 @@ body{
 .cloud::after{
     width:140px;
     height:140px;
+
     right:40px;
     bottom:0;
 }
-
-/* CLOUD 1 */
 
 .c1{
     width:320px;
     top:13%;
     left:-350px;
-    animation:cloudLeft 38s linear infinite;
-}
 
-/* CLOUD 2 */
+    animation:cloudLeft 42s linear infinite;
+}
 
 .c2{
     width:500px;
     top:25%;
     right:-550px;
-    animation:cloudRight 48s linear infinite;
+
+    animation:cloudRight 55s linear infinite;
     transform:scale(.8);
 }
-
-/* CLOUD 3 */
 
 .c3{
     width:260px;
     top:39%;
     left:-300px;
-    animation:cloudLeft 32s linear infinite;
+
+    animation:cloudLeft 36s linear infinite;
     animation-delay:8s;
+
     transform:scale(.7);
 }
-
-/* CLOUD 4 */
 
 .c4{
     width:430px;
     top:54%;
     right:-500px;
-    animation:cloudRight 43s linear infinite;
+
+    animation:cloudRight 48s linear infinite;
     animation-delay:4s;
+
     transform:scale(.9);
 }
-
-/* CLOUD 5 */
 
 .c5{
     width:350px;
     top:70%;
     left:-400px;
-    animation:cloudLeft 50s linear infinite;
+
+    animation:cloudLeft 55s linear infinite;
     animation-delay:12s;
+
     transform:scale(.8);
 }
-
-/* CLOUD 6 */
 
 .c6{
     width:550px;
     top:83%;
     right:-600px;
-    animation:cloudRight 55s linear infinite;
+
+    animation:cloudRight 60s linear infinite;
     animation-delay:15s;
+
     transform:scale(1.1);
 }
 
 @keyframes cloudLeft{
-
     from{
         transform:translateX(0) scale(.8);
     }
@@ -231,7 +242,6 @@ body{
 }
 
 @keyframes cloudRight{
-
     from{
         transform:translateX(0) scale(.9);
     }
@@ -242,40 +252,47 @@ body{
 }
 
 /* =====================================================
-   MINI CLOUDS
+   MINI CLOUD
 ===================================================== */
 
 .mini-cloud{
     position:absolute;
+
     width:100px;
     height:25px;
 
     background:rgba(255,255,255,.6);
+
     border-radius:50px;
 
     filter:blur(3px);
 
-    animation:miniFloat 7s ease-in-out infinite;
+    animation:miniFloat 8s ease-in-out infinite;
+}
+
+.mini-cloud::before,
+.mini-cloud::after{
+    content:"";
+
+    position:absolute;
+
+    border-radius:50%;
+
+    background:inherit;
 }
 
 .mini-cloud::before{
-    content:"";
-    position:absolute;
     width:45px;
     height:45px;
-    border-radius:50%;
-    background:inherit;
+
     left:15px;
     bottom:0;
 }
 
 .mini-cloud::after{
-    content:"";
-    position:absolute;
     width:60px;
     height:60px;
-    border-radius:50%;
-    background:inherit;
+
     right:10px;
     bottom:0;
 }
@@ -288,12 +305,14 @@ body{
 .mc2{
     top:48%;
     left:72%;
+
     animation-delay:2s;
 }
 
 .mc3{
     top:68%;
     left:28%;
+
     animation-delay:4s;
 }
 
@@ -304,7 +323,196 @@ body{
     }
 
     50%{
-        transform:translateY(-20px);
+        transform:translateY(-18px);
+    }
+}
+
+/* =====================================================
+   ANGEL
+===================================================== */
+
+.angel{
+    position:absolute;
+
+    top:15%;
+    left:50%;
+
+    width:160px;
+    height:210px;
+
+    transform:translateX(-50%);
+
+    opacity:.20;
+
+    filter:
+        drop-shadow(0 0 20px white)
+        blur(.3px);
+
+    animation:
+        angelFloat 7s ease-in-out infinite,
+        angelGlow 5s ease-in-out infinite;
+}
+
+.angel-halo{
+    position:absolute;
+
+    width:75px;
+    height:75px;
+
+    left:42px;
+    top:5px;
+
+    border-radius:50%;
+
+    border:4px solid rgba(255,239,171,.8);
+
+    box-shadow:
+        0 0 20px rgba(255,240,170,.9),
+        0 0 50px rgba(255,255,255,.8);
+}
+
+.angel-head{
+    position:absolute;
+
+    width:48px;
+    height:48px;
+
+    left:56px;
+    top:28px;
+
+    border-radius:50%;
+
+    background:
+        radial-gradient(
+            circle at 35% 30%,
+            #fff,
+            #dcefff 70%
+        );
+
+    box-shadow:
+        0 0 25px white;
+}
+
+.angel-body{
+    position:absolute;
+
+    left:49px;
+    top:70px;
+
+    width:62px;
+    height:105px;
+
+    border-radius:
+        45% 45% 25% 25%;
+
+    background:
+        linear-gradient(
+            180deg,
+            rgba(255,255,255,.98),
+            rgba(220,241,252,.75)
+        );
+
+    box-shadow:
+        0 15px 35px rgba(255,255,255,.6);
+}
+
+.wing{
+    position:absolute;
+
+    top:72px;
+
+    width:78px;
+    height:115px;
+
+    background:
+        linear-gradient(
+            180deg,
+            rgba(255,255,255,.95),
+            rgba(214,239,251,.55)
+        );
+
+    filter:blur(.5px);
+
+    border-radius:
+        70% 30% 70% 30%;
+}
+
+.wing.left{
+    left:-5px;
+
+    transform:
+        rotate(22deg)
+        skewY(-8deg);
+
+    transform-origin:right center;
+
+    animation:wingLeft 3.5s ease-in-out infinite;
+}
+
+.wing.right{
+    right:-5px;
+
+    transform:
+        scaleX(-1)
+        rotate(22deg)
+        skewY(-8deg);
+
+    transform-origin:left center;
+
+    animation:wingRight 3.5s ease-in-out infinite;
+}
+
+@keyframes wingLeft{
+    0%,100%{
+        transform:rotate(22deg) skewY(-8deg);
+    }
+
+    50%{
+        transform:
+            rotate(8deg)
+            scaleY(.92)
+            skewY(-8deg);
+    }
+}
+
+@keyframes wingRight{
+    0%,100%{
+        transform:
+            scaleX(-1)
+            rotate(22deg)
+            skewY(-8deg);
+    }
+
+    50%{
+        transform:
+            scaleX(-1)
+            rotate(8deg)
+            scaleY(.92)
+            skewY(-8deg);
+    }
+}
+
+@keyframes angelFloat{
+    0%,100%{
+        transform:
+            translateX(-50%)
+            translateY(0);
+    }
+
+    50%{
+        transform:
+            translateX(-50%)
+            translateY(-20px);
+    }
+}
+
+@keyframes angelGlow{
+    0%,100%{
+        opacity:.15;
+    }
+
+    50%{
+        opacity:.32;
     }
 }
 
@@ -314,10 +522,12 @@ body{
 
 .particle{
     position:absolute;
+
     width:4px;
     height:4px;
 
     border-radius:50%;
+
     background:white;
 
     box-shadow:
@@ -327,24 +537,30 @@ body{
     animation:particleFloat 6s ease-in-out infinite;
 }
 
-.p1{left:8%;top:25%;animation-delay:0s}
-.p2{left:18%;top:65%;animation-delay:1s}
-.p3{left:35%;top:18%;animation-delay:2s}
-.p4{left:48%;top:72%;animation-delay:3s}
-.p5{left:60%;top:32%;animation-delay:1.5s}
-.p6{left:72%;top:75%;animation-delay:4s}
-.p7{left:85%;top:22%;animation-delay:2.5s}
-.p8{left:92%;top:58%;animation-delay:5s}
+.p1{left:8%;top:25%}
+.p2{left:18%;top:65%}
+.p3{left:35%;top:18%}
+.p4{left:48%;top:72%}
+.p5{left:60%;top:32%}
+.p6{left:72%;top:75%}
+.p7{left:85%;top:22%}
+.p8{left:92%;top:58%}
 
 @keyframes particleFloat{
 
     0%,100%{
-        transform:translateY(0) scale(.7);
+        transform:
+            translateY(0)
+            scale(.7);
+
         opacity:.2;
     }
 
     50%{
-        transform:translateY(-35px) scale(1.3);
+        transform:
+            translateY(-35px)
+            scale(1.3);
+
         opacity:1;
     }
 }
@@ -358,6 +574,7 @@ nav{
 
     top:20px;
     left:50%;
+
     transform:translateX(-50%);
 
     width:min(1100px,92%);
@@ -365,6 +582,7 @@ nav{
     padding:14px 25px;
 
     display:flex;
+
     justify-content:space-between;
     align-items:center;
 
@@ -389,32 +607,39 @@ nav{
 
     from{
         opacity:0;
-        transform:translate(-50%,-30px);
+        transform:
+            translate(-50%,-30px);
     }
 
     to{
         opacity:1;
-        transform:translate(-50%,0);
+        transform:
+            translate(-50%,0);
     }
 }
 
 .logo{
     font-family:'Cormorant Garamond',serif;
+
     font-size:28px;
+
     font-weight:700;
+
     color:#285477;
 }
 
 .logo span{
     color:#e0b65e;
+
     display:inline-block;
+
     animation:spinStar 5s linear infinite;
 }
 
 @keyframes spinStar{
 
     from{
-        transform:rotate(0deg);
+        transform:rotate(0);
     }
 
     to{
@@ -424,19 +649,37 @@ nav{
 
 nav ul{
     display:flex;
+
     gap:30px;
+
     list-style:none;
 }
 
 nav a{
     color:#3b6078;
+
     text-decoration:none;
+
     font-size:13px;
+
     position:relative;
+
+    padding:5px 0;
+
+    transition:
+        color .4s ease,
+        transform .4s ease;
+}
+
+nav a:hover{
+    color:#4d96bc;
+
+    transform:translateY(-2px);
 }
 
 nav a::after{
     content:"";
+
     position:absolute;
 
     left:50%;
@@ -445,14 +688,32 @@ nav a::after{
     width:0;
     height:2px;
 
-    background:#82c6e6;
+    border-radius:10px;
 
-    transition:.3s;
+    background:
+        linear-gradient(
+            90deg,
+            #8bd0ee,
+            #ffffff,
+            #8bd0ee
+        );
+
+    box-shadow:
+        0 0 10px rgba(120,200,235,.8);
+
     transform:translateX(-50%);
+
+    transition:
+        width .45s cubic-bezier(.4,0,.2,1);
 }
 
-nav a:hover::after{
+nav a:hover::after,
+nav a.active::after{
     width:100%;
+}
+
+nav a.active{
+    color:#4d96bc;
 }
 
 /* =====================================================
@@ -463,12 +724,14 @@ nav a:hover::after{
     min-height:100vh;
 
     display:flex;
+
     align-items:center;
     justify-content:center;
 
     text-align:center;
 
-    padding:120px 20px 80px;
+    padding:
+        120px 20px 80px;
 
     position:relative;
 }
@@ -476,33 +739,40 @@ nav a:hover::after{
 .hero-content{
     max-width:900px;
 
-    animation:heroReveal 1.5s ease;
+    animation:
+        heroReveal 1.5s ease;
 }
 
 @keyframes heroReveal{
 
     from{
         opacity:0;
-        transform:translateY(35px);
+
+        transform:
+            translateY(35px);
     }
 
     to{
         opacity:1;
-        transform:translateY(0);
+
+        transform:
+            translateY(0);
     }
 }
 
 .badge{
-
     display:inline-flex;
 
-    padding:10px 20px;
+    padding:
+        10px 20px;
 
     border-radius:40px;
 
-    background:rgba(255,255,255,.55);
+    background:
+        rgba(255,255,255,.55);
 
-    border:1px solid rgba(255,255,255,.9);
+    border:
+        1px solid rgba(255,255,255,.9);
 
     backdrop-filter:blur(20px);
 
@@ -514,14 +784,18 @@ nav a:hover::after{
 
     margin-bottom:30px;
 
-    box-shadow:0 10px 30px rgba(80,160,200,.1);
+    box-shadow:
+        0 10px 30px rgba(80,160,200,.1);
 
-    animation:badgeFloat 4s ease-in-out infinite;
+    animation:
+        badgeFloat 4s ease-in-out infinite;
 }
 
 .badge::before{
     content:"✦";
+
     color:#e5bd6e;
+
     margin-right:8px;
 }
 
@@ -537,10 +811,10 @@ nav a:hover::after{
 }
 
 .hero h1{
-
     font-family:'Cormorant Garamond',serif;
 
-    font-size:clamp(75px,11vw,145px);
+    font-size:
+        clamp(75px,11vw,145px);
 
     line-height:.78;
 
@@ -550,11 +824,9 @@ nav a:hover::after{
 
     text-shadow:
         0 10px 35px rgba(70,150,190,.15);
-
 }
 
 .hero h1 span{
-
     display:block;
 
     color:#8bc6e4;
@@ -566,7 +838,6 @@ nav a:hover::after{
 }
 
 .hero p{
-
     max-width:650px;
 
     margin:40px auto;
@@ -579,16 +850,18 @@ nav a:hover::after{
 }
 
 .hero-buttons{
-
     display:flex;
+
     justify-content:center;
+
     gap:15px;
+
     flex-wrap:wrap;
 }
 
 .btn{
-
-    padding:15px 27px;
+    padding:
+        15px 27px;
 
     border-radius:50px;
 
@@ -596,7 +869,9 @@ nav a:hover::after{
 
     font-size:12px;
 
-    transition:.4s;
+    transition:
+        transform .5s cubic-bezier(.2,.8,.2,1),
+        box-shadow .5s ease;
 
     position:relative;
 
@@ -604,7 +879,6 @@ nav a:hover::after{
 }
 
 .btn::before{
-
     content:"";
 
     position:absolute;
@@ -615,12 +889,13 @@ nav a:hover::after{
     width:70%;
     height:100%;
 
-    background:linear-gradient(
-        90deg,
-        transparent,
-        rgba(255,255,255,.5),
-        transparent
-    );
+    background:
+        linear-gradient(
+            90deg,
+            transparent,
+            rgba(255,255,255,.5),
+            transparent
+        );
 
     transform:skewX(-20deg);
 
@@ -632,7 +907,6 @@ nav a:hover::after{
 }
 
 .btn-primary{
-
     color:white;
 
     background:
@@ -647,19 +921,24 @@ nav a:hover::after{
 }
 
 .btn-secondary{
-
     color:#52758c;
 
-    background:rgba(255,255,255,.6);
+    background:
+        rgba(255,255,255,.6);
 
-    border:1px solid rgba(255,255,255,.9);
+    border:
+        1px solid rgba(255,255,255,.9);
 
     backdrop-filter:blur(10px);
 }
 
 .btn:hover{
+    transform:
+        translateY(-5px)
+        scale(1.02);
 
-    transform:translateY(-5px) scale(1.02);
+    box-shadow:
+        0 20px 45px rgba(70,150,190,.2);
 }
 
 /* =====================================================
@@ -667,19 +946,19 @@ nav a:hover::after{
 ===================================================== */
 
 section{
-    padding:120px 7%;
+    padding:
+        120px 7%;
+
+    scroll-margin-top:100px;
 }
 
 .section-title{
-
     text-align:center;
 
     margin-bottom:60px;
-
 }
 
 .section-title small{
-
     color:#85b8d2;
 
     letter-spacing:5px;
@@ -688,7 +967,6 @@ section{
 }
 
 .section-title h2{
-
     font-family:'Cormorant Garamond',serif;
 
     font-size:60px;
@@ -703,10 +981,11 @@ section{
 ===================================================== */
 
 .glass{
+    background:
+        rgba(255,255,255,.45);
 
-    background:rgba(255,255,255,.45);
-
-    border:1px solid rgba(255,255,255,.85);
+    border:
+        1px solid rgba(255,255,255,.85);
 
     backdrop-filter:blur(25px);
 
@@ -717,15 +996,18 @@ section{
     box-shadow:
         0 25px 80px rgba(79,145,180,.12);
 
-    transition:.45s;
+    transition:
+        transform .6s cubic-bezier(.2,.8,.2,1),
+        box-shadow .6s ease,
+        border-color .6s ease;
 }
 
 .glass:hover{
-
     box-shadow:
         0 35px 100px rgba(79,145,180,.18);
 
-    border-color:rgba(255,255,255,1);
+    border-color:
+        rgba(255,255,255,1);
 }
 
 /* =====================================================
@@ -733,25 +1015,26 @@ section{
 ===================================================== */
 
 .profile{
-
     max-width:1100px;
 
     margin:auto;
 
     display:grid;
 
-    grid-template-columns:1fr 1.4fr;
+    grid-template-columns:
+        1fr 1.4fr;
 
     gap:35px;
 }
 
 .profile-card{
-
-    padding:50px 30px;
+    padding:
+        50px 30px;
 
     text-align:center;
 
-    animation:cardFloat 6s ease-in-out infinite;
+    animation:
+        cardFloat 6s ease-in-out infinite;
 }
 
 @keyframes cardFloat{
@@ -766,7 +1049,6 @@ section{
 }
 
 .avatar{
-
     width:165px;
     height:165px;
 
@@ -790,7 +1072,6 @@ section{
 }
 
 .avatar div{
-
     width:100%;
     height:100%;
 
@@ -808,7 +1089,8 @@ section{
             #d8f3ff
         );
 
-    font-family:'Cormorant Garamond',serif;
+    font-family:
+        'Cormorant Garamond',serif;
 
     font-size:75px;
 
@@ -816,10 +1098,10 @@ section{
 }
 
 .profile-card h3{
-
     margin-top:28px;
 
-    font-family:'Cormorant Garamond',serif;
+    font-family:
+        'Cormorant Garamond',serif;
 
     font-size:37px;
 
@@ -827,7 +1109,6 @@ section{
 }
 
 .profile-card p{
-
     color:#7a94a5;
 
     font-size:13px;
@@ -836,13 +1117,12 @@ section{
 }
 
 .info{
-
     padding:45px;
 }
 
 .info h3{
-
-    font-family:'Cormorant Garamond',serif;
+    font-family:
+        'Cormorant Garamond',serif;
 
     font-size:42px;
 
@@ -852,7 +1132,6 @@ section{
 }
 
 .info p{
-
     line-height:1.9;
 
     color:#718899;
@@ -861,38 +1140,40 @@ section{
 }
 
 .info-grid{
-
     margin-top:30px;
 
     display:grid;
 
-    grid-template-columns:1fr 1fr;
+    grid-template-columns:
+        1fr 1fr;
 
     gap:15px;
 }
 
 .info-box{
-
     padding:18px;
 
     border-radius:18px;
 
-    background:rgba(255,255,255,.45);
+    background:
+        rgba(255,255,255,.45);
 
-    border:1px solid rgba(255,255,255,.7);
+    border:
+        1px solid rgba(255,255,255,.7);
 
-    transition:.35s;
+    transition:
+        transform .4s ease,
+        background .4s ease;
 }
 
 .info-box:hover{
-
     transform:translateY(-5px);
 
-    background:rgba(255,255,255,.7);
+    background:
+        rgba(255,255,255,.7);
 }
 
 .info-box small{
-
     display:block;
 
     color:#9ab5c5;
@@ -903,7 +1184,6 @@ section{
 }
 
 .info-box strong{
-
     display:block;
 
     color:#456b82;
@@ -918,36 +1198,35 @@ section{
 ===================================================== */
 
 .skills{
-
     max-width:1000px;
 
     margin:auto;
 
     display:grid;
 
-    grid-template-columns:repeat(3,1fr);
+    grid-template-columns:
+        repeat(3,1fr);
 
     gap:20px;
 }
 
 .skill{
-
-    padding:35px 25px;
+    padding:
+        35px 25px;
 
     text-align:center;
 
-    transition:.45s;
+    transition:
+        transform .6s cubic-bezier(.2,.8,.2,1);
 }
 
 .skill:hover{
-
     transform:
         translateY(-12px)
         scale(1.02);
 }
 
 .skill-icon{
-
     width:70px;
     height:70px;
 
@@ -960,7 +1239,8 @@ section{
 
     border-radius:22px;
 
-    background:rgba(255,255,255,.65);
+    background:
+        rgba(255,255,255,.65);
 
     font-size:30px;
 
@@ -971,7 +1251,6 @@ section{
 }
 
 .skill:hover .skill-icon{
-
     transform:
         rotate(8deg)
         scale(1.1);
@@ -981,7 +1260,6 @@ section{
 }
 
 .skill h3{
-
     margin-top:20px;
 
     color:#446b82;
@@ -990,7 +1268,6 @@ section{
 }
 
 .skill p{
-
     margin-top:8px;
 
     color:#8ba0ae;
@@ -1005,20 +1282,19 @@ section{
 ===================================================== */
 
 .projects{
-
     max-width:1100px;
 
     margin:auto;
 
     display:grid;
 
-    grid-template-columns:repeat(3,1fr);
+    grid-template-columns:
+        repeat(3,1fr);
 
     gap:22px;
 }
 
 .project{
-
     padding:32px;
 
     min-height:240px;
@@ -1027,11 +1303,11 @@ section{
 
     overflow:hidden;
 
-    transition:.45s;
+    transition:
+        transform .6s cubic-bezier(.2,.8,.2,1);
 }
 
 .project::after{
-
     content:"";
 
     position:absolute;
@@ -1041,7 +1317,8 @@ section{
 
     border-radius:50%;
 
-    background:rgba(180,225,245,.25);
+    background:
+        rgba(180,225,245,.25);
 
     top:-70px;
     right:-70px;
@@ -1052,37 +1329,36 @@ section{
 }
 
 .project:hover{
-
     transform:translateY(-12px);
 }
 
 .project:hover::after{
-
     transform:scale(1.5);
 
-    background:rgba(180,225,245,.4);
+    background:
+        rgba(180,225,245,.4);
 }
 
 .project-number{
-
-    font-family:'Cormorant Garamond',serif;
+    font-family:
+        'Cormorant Garamond',serif;
 
     font-size:75px;
 
-    color:rgba(115,180,210,.14);
+    color:
+        rgba(115,180,210,.14);
 
     position:absolute;
 
     top:0;
-
     right:20px;
 }
 
 .project h3{
-
     margin-top:50px;
 
-    font-family:'Cormorant Garamond',serif;
+    font-family:
+        'Cormorant Garamond',serif;
 
     font-size:32px;
 
@@ -1090,7 +1366,6 @@ section{
 }
 
 .project p{
-
     color:#8298a7;
 
     font-size:12px;
@@ -1101,16 +1376,16 @@ section{
 }
 
 /* =====================================================
-   WORDS OF TODAY
+   TODAY
 ===================================================== */
 
 .today{
-
     max-width:1000px;
 
     margin:auto;
 
-    padding:70px 45px;
+    padding:
+        70px 45px;
 
     text-align:center;
 
@@ -1120,7 +1395,6 @@ section{
 }
 
 .today::before{
-
     content:"";
 
     position:absolute;
@@ -1142,7 +1416,6 @@ section{
 }
 
 .today-label{
-
     color:#d2a84f;
 
     font-size:11px;
@@ -1151,23 +1424,24 @@ section{
 }
 
 .today h2{
-
-    font-family:'Cormorant Garamond',serif;
+    font-family:
+        'Cormorant Garamond',serif;
 
     font-size:55px;
 
     color:#315a73;
 
-    margin:15px 0 20px;
+    margin:
+        15px 0 20px;
 }
 
 .today-text{
-
     max-width:700px;
 
     margin:auto;
 
-    font-family:'Cormorant Garamond',serif;
+    font-family:
+        'Cormorant Garamond',serif;
 
     font-size:32px;
 
@@ -1179,7 +1453,6 @@ section{
 }
 
 .today-author{
-
     margin-top:25px;
 
     color:#91a8b7;
@@ -1194,41 +1467,45 @@ section{
 ===================================================== */
 
 .quote{
-
     text-align:center;
 
     max-width:850px;
 
     margin:auto;
 
-    padding:80px 30px;
+    padding:
+        80px 30px;
 }
 
 .quote-icon{
-
     font-size:35px;
 
     color:#e5bd6e;
 
-    animation:starGlow 2s ease-in-out infinite;
+    animation:
+        starGlow 2s ease-in-out infinite;
 }
 
 @keyframes starGlow{
 
     0%,100%{
         transform:scale(1);
-        filter:drop-shadow(0 0 0 transparent);
+
+        filter:
+            drop-shadow(0 0 0 transparent);
     }
 
     50%{
         transform:scale(1.25);
-        filter:drop-shadow(0 0 15px #f5d98d);
+
+        filter:
+            drop-shadow(0 0 15px #f5d98d);
     }
 }
 
 .quote p{
-
-    font-family:'Cormorant Garamond',serif;
+    font-family:
+        'Cormorant Garamond',serif;
 
     font-size:40px;
 
@@ -1236,13 +1513,13 @@ section{
 
     color:#456b80;
 
-    margin:20px 0;
+    margin:
+        20px 0;
 
     font-style:italic;
 }
 
 .quote small{
-
     color:#91a8b7;
 }
 
@@ -1251,8 +1528,8 @@ section{
 ===================================================== */
 
 footer{
-
-    padding:70px 20px;
+    padding:
+        70px 20px;
 
     text-align:center;
 
@@ -1262,7 +1539,6 @@ footer{
 }
 
 footer .wings{
-
     font-size:30px;
 
     margin-bottom:18px;
@@ -1271,7 +1547,8 @@ footer .wings{
 
     letter-spacing:15px;
 
-    animation:footerFloat 4s ease-in-out infinite;
+    animation:
+        footerFloat 4s ease-in-out infinite;
 }
 
 @keyframes footerFloat{
@@ -1286,25 +1563,76 @@ footer .wings{
 }
 
 /* =====================================================
-   SCROLL REVEAL
+   REVEAL
 ===================================================== */
 
 .reveal{
-
     opacity:0;
 
-    transform:translateY(40px);
+    transform:
+        translateY(45px)
+        scale(.98);
+
+    filter:blur(4px);
 
     transition:
-        opacity 1s ease,
-        transform 1s ease;
+        opacity 1s cubic-bezier(.2,.8,.2,1),
+        transform 1s cubic-bezier(.2,.8,.2,1),
+        filter 1s ease;
 }
 
 .reveal.active{
-
     opacity:1;
 
-    transform:translateY(0);
+    transform:
+        translateY(0)
+        scale(1);
+
+    filter:blur(0);
+}
+
+/* =====================================================
+   PAGE TRANSITION
+===================================================== */
+
+.page-transition{
+    position:fixed;
+
+    inset:0;
+
+    z-index:9999;
+
+    pointer-events:none;
+
+    background:
+        radial-gradient(
+            circle at center,
+            rgba(255,255,255,.95),
+            rgba(220,244,255,.92),
+            rgba(170,220,245,.95)
+        );
+
+    opacity:0;
+
+    transform:
+        scaleY(0);
+
+    transform-origin:
+        bottom;
+
+    transition:
+        transform .65s cubic-bezier(.77,0,.18,1),
+        opacity .45s ease;
+}
+
+.page-transition.active{
+    opacity:1;
+
+    transform:
+        scaleY(1);
+
+    transform-origin:
+        top;
 }
 
 /* =====================================================
@@ -1314,7 +1642,8 @@ footer .wings{
 @media(max-width:800px){
 
     nav{
-        padding:13px 18px;
+        padding:
+            13px 18px;
     }
 
     nav ul{
@@ -1349,6 +1678,12 @@ footer .wings{
     .quote p{
         font-size:30px;
     }
+
+    .angel{
+        transform:
+            translateX(-50%)
+            scale(.75);
+    }
 }
 
 @media(max-width:500px){
@@ -1374,17 +1709,28 @@ footer .wings{
     }
 
     .today{
-        padding:55px 25px;
+        padding:
+            55px 25px;
     }
 
     .today h2{
         font-size:43px;
+    }
+
+    .angel{
+        top:12%;
+        transform:
+            translateX(-50%)
+            scale(.6);
     }
 }
 </style>
 </head>
 
 <body>
+
+<!-- PAGE TRANSITION -->
+<div class="page-transition"></div>
 
 <!-- =====================================================
      SKY
@@ -1395,7 +1741,21 @@ footer .wings{
     <div class="sun"></div>
     <div class="light"></div>
 
-    <!-- BIG CLOUDS -->
+    <!-- ANGEL -->
+
+    <div class="angel">
+
+        <div class="angel-halo"></div>
+
+        <div class="wing left"></div>
+        <div class="wing right"></div>
+
+        <div class="angel-head"></div>
+        <div class="angel-body"></div>
+
+    </div>
+
+    <!-- CLOUDS -->
 
     <div class="cloud c1"></div>
     <div class="cloud c2"></div>
@@ -1404,7 +1764,7 @@ footer .wings{
     <div class="cloud c5"></div>
     <div class="cloud c6"></div>
 
-    <!-- SMALL CLOUDS -->
+    <!-- MINI CLOUD -->
 
     <div class="mini-cloud mc1"></div>
     <div class="mini-cloud mc2"></div>
@@ -1434,11 +1794,37 @@ footer .wings{
     </div>
 
     <ul>
-        <li><a href="#home">Home</a></li>
-        <li><a href="#profile">Profile</a></li>
-        <li><a href="#skills">Skills</a></li>
-        <li><a href="#projects">Projects</a></li>
-        <li><a href="#today">Today</a></li>
+
+        <li>
+            <a href="#home" class="active">
+                Home
+            </a>
+        </li>
+
+        <li>
+            <a href="#profile">
+                Profile
+            </a>
+        </li>
+
+        <li>
+            <a href="#skills">
+                Skills
+            </a>
+        </li>
+
+        <li>
+            <a href="#projects">
+                Projects
+            </a>
+        </li>
+
+        <li>
+            <a href="#today">
+                Today
+            </a>
+        </li>
+
     </ul>
 
 </nav>
@@ -1490,9 +1876,13 @@ footer .wings{
 
     <div class="section-title reveal">
 
-        <small>ABOUT ME</small>
+        <small>
+            ABOUT ME
+        </small>
 
-        <h2>Heavenly Profile</h2>
+        <h2>
+            Heavenly Profile
+        </h2>
 
     </div>
 
@@ -1566,9 +1956,13 @@ footer .wings{
 
     <div class="section-title reveal">
 
-        <small>WHAT I LEARN</small>
+        <small>
+            WHAT I LEARN
+        </small>
 
-        <h2>My Skills</h2>
+        <h2>
+            My Skills
+        </h2>
 
     </div>
 
@@ -1637,9 +2031,13 @@ footer .wings{
 
     <div class="section-title reveal">
 
-        <small>MY CREATIONS</small>
+        <small>
+            MY CREATIONS
+        </small>
 
-        <h2>Projects</h2>
+        <h2>
+            Projects
+        </h2>
 
     </div>
 
@@ -1704,7 +2102,7 @@ footer .wings{
 </section>
 
 <!-- =====================================================
-     WORDS OF TODAY
+     TODAY
 ===================================================== -->
 
 <section id="today">
@@ -1787,7 +2185,9 @@ footer .wings{
 
 <script>
 
-/* SCROLL REVEAL */
+/* =====================================================
+   SCROLL REVEAL
+===================================================== */
 
 const reveals =
 document.querySelectorAll(".reveal");
@@ -1808,94 +2208,396 @@ new IntersectionObserver(
 
 },
 {
-    threshold:0.12
+    threshold:.12
 });
 
 reveals.forEach(
-element => observer.observe(element)
+element =>
+observer.observe(element)
 );
 
 
-/* MOUSE PARALLAX */
+/* =====================================================
+   CINEMATIC SMOOTH SCROLL
+===================================================== */
 
-document.addEventListener(
-"mousemove",
-(e) => {
+const navLinks =
+document.querySelectorAll("nav a");
 
-    const x =
-        (e.clientX / window.innerWidth - .5);
+const transition =
+document.querySelector(".page-transition");
 
-    const y =
-        (e.clientY / window.innerHeight - .5);
+let scrolling = false;
 
-    const clouds =
-        document.querySelectorAll(".mini-cloud");
+function smoothScrollTo(target){
 
-    clouds.forEach((cloud,index) => {
+    if(scrolling) return;
 
-        const strength =
-            (index + 1) * 12;
+    scrolling = true;
 
-        cloud.style.transform =
-            `translate(${x * strength}px,
-                        ${y * strength}px)`;
+    const navHeight =
+        document.querySelector("nav").offsetHeight + 45;
 
-    });
-
-    const light =
-        document.querySelector(".light");
-
-    light.style.transform =
-        `rotate(25deg)
-         translate(${x * 30}px,
-                   ${y * 20}px)`;
-
-});
-
-
-/* RANDOM PARTICLE MOVEMENT */
-
-const particles =
-document.querySelectorAll(".particle");
-
-particles.forEach((particle,index) => {
-
-    particle.style.animationDuration =
-        `${5 + Math.random() * 5}s`;
-
-    particle.style.animationDelay =
-        `${Math.random() * 5}s`;
-
-});
-
-
-/* GENTLE HERO PARALLAX */
-
-const hero =
-document.querySelector(".hero-content");
-
-window.addEventListener(
-"scroll",
-() => {
-
-    const scroll =
+    const start =
         window.scrollY;
 
-    if(scroll < window.innerHeight){
+    const targetPosition =
+        target.getBoundingClientRect().top
+        + window.scrollY
+        - navHeight;
 
-        hero.style.transform =
-            `translateY(${scroll * .12}px)`;
+    const distance =
+        targetPosition - start;
 
-        hero.style.opacity =
-            1 - (scroll / 900);
+    const duration =
+        Math.min(
+            1500,
+            Math.max(
+                750,
+                Math.abs(distance) * .7
+            )
+        );
+
+    let startTime = null;
+
+    function easeInOutCubic(t){
+
+        return t < .5
+            ? 4 * t * t * t
+            : 1 -
+              Math.pow(
+                  -2 * t + 2,
+                  3
+              ) / 2;
 
     }
 
+    function animation(currentTime){
+
+        if(!startTime)
+            startTime = currentTime;
+
+        const progress =
+            Math.min(
+                (currentTime - startTime)
+                / duration,
+                1
+            );
+
+        const eased =
+            easeInOutCubic(progress);
+
+        window.scrollTo(
+            0,
+            start + distance * eased
+        );
+
+        if(progress < 1){
+
+            requestAnimationFrame(animation);
+
+        }else{
+
+            scrolling = false;
+
+        }
+
+    }
+
+    requestAnimationFrame(animation);
+}
+
+
+/* NAV CLICK */
+
+navLinks.forEach(link => {
+
+    link.addEventListener(
+        "click",
+        event => {
+
+            event.preventDefault();
+
+            const id =
+                link.getAttribute("href");
+
+            const target =
+                document.querySelector(id);
+
+            if(!target)
+                return;
+
+            navLinks.forEach(item =>
+                item.classList.remove("active")
+            );
+
+            link.classList.add("active");
+
+            smoothScrollTo(target);
+
+            history.replaceState(
+                null,
+                "",
+                id
+            );
+
+        }
+    );
+
 });
 
+
+/* =====================================================
+   ACTIVE NAV ON SCROLL
+===================================================== */
+
+const sections =
+document.querySelectorAll("section[id]");
+
+function updateActiveNav(){
+
+    if(scrolling)
+        return;
+
+    let current = "home";
+
+    sections.forEach(section => {
+
+        const top =
+            section.offsetTop - 180;
+
+        if(window.scrollY >= top){
+
+            current =
+                section.id;
+
+        }
+
+    });
+
+    navLinks.forEach(link => {
+
+        link.classList.toggle(
+            "active",
+            link.getAttribute("href")
+            === "#" + current
+        );
+
+    });
+
+}
+
+window.addEventListener(
+    "scroll",
+    updateActiveNav,
+    {
+        passive:true
+    }
+);
+
+
+/* =====================================================
+   MOUSE PARALLAX
+===================================================== */
+
+const miniClouds =
+document.querySelectorAll(
+    ".mini-cloud"
+);
+
+const light =
+document.querySelector(".light");
+
+const angel =
+document.querySelector(".angel");
+
+let mouseX = 0;
+let mouseY = 0;
+
+let currentX = 0;
+let currentY = 0;
+
+document.addEventListener(
+    "mousemove",
+    e => {
+
+        mouseX =
+            (e.clientX /
+            window.innerWidth - .5);
+
+        mouseY =
+            (e.clientY /
+            window.innerHeight - .5);
+
+    }
+);
+
+function animateParallax(){
+
+    currentX +=
+        (mouseX - currentX) * .04;
+
+    currentY +=
+        (mouseY - currentY) * .04;
+
+    miniClouds.forEach(
+        (cloud,index) => {
+
+            const strength =
+                (index + 1) * 10;
+
+            cloud.style.marginLeft =
+                `${currentX * strength}px`;
+
+            cloud.style.marginTop =
+                `${currentY * strength}px`;
+
+        }
+    );
+
+    light.style.marginLeft =
+        `${currentX * 25}px`;
+
+    light.style.marginTop =
+        `${currentY * 15}px`;
+
+    angel.style.marginLeft =
+        `${currentX * 18}px`;
+
+    angel.style.marginTop =
+        `${currentY * 12}px`;
+
+    requestAnimationFrame(
+        animateParallax
+    );
+}
+
+animateParallax();
+
+
+/* =====================================================
+   PARTICLES RANDOM
+===================================================== */
+
+const particles =
+document.querySelectorAll(
+    ".particle"
+);
+
+particles.forEach(
+    particle => {
+
+        particle.style.animationDuration =
+            `${5 + Math.random() * 5}s`;
+
+        particle.style.animationDelay =
+            `${Math.random() * 5}s`;
+
+    }
+);
+
+
+/* =====================================================
+   HERO PARALLAX
+===================================================== */
+
+const hero =
+document.querySelector(
+    ".hero-content"
+);
+
+window.addEventListener(
+    "scroll",
+    () => {
+
+        const scroll =
+            window.scrollY;
+
+        if(scroll <
+           window.innerHeight){
+
+            hero.style.transform =
+                `translateY(${scroll * .10}px)`;
+
+            hero.style.opacity =
+                Math.max(
+                    0,
+                    1 - scroll / 850
+                );
+
+        }
+
+    },
+    {
+        passive:true
+    }
+);
+
+
+/* =====================================================
+   BUTTON SMOOTH SCROLL
+===================================================== */
+
+document
+.querySelectorAll(".btn")
+.forEach(button => {
+
+    button.addEventListener(
+        "click",
+        event => {
+
+            const href =
+                button.getAttribute(
+                    "href"
+                );
+
+            if(!href ||
+               !href.startsWith("#"))
+                return;
+
+            event.preventDefault();
+
+            const target =
+                document.querySelector(
+                    href
+                );
+
+            if(target)
+                smoothScrollTo(target);
+
+        }
+    );
+
+});
+
+
+/* =====================================================
+   PAGE LOAD
+===================================================== */
+
+window.addEventListener(
+    "load",
+    () => {
+
+        setTimeout(
+            () => {
+
+                document
+                .querySelector(
+                    "#home"
+                )
+                .scrollIntoView({
+                    behavior:"instant"
+                });
+
+            },
+            50
+        );
+
+    }
+);
 
 </script>
 
 </body>
 </html>
-```
