@@ -1,0 +1,1277 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Frosty - Muhammad Aftur Azizan</title>
+
+<style>
+
+/* =========================
+   RESET
+========================= */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Segoe UI", Arial, sans-serif;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    background: #03121f;
+    color: white;
+    overflow-x: hidden;
+}
+
+
+/* =========================
+   GLACIER BACKGROUND
+========================= */
+
+.background {
+    position: fixed;
+    inset: -40px;
+
+    background-image:
+        url("https://images.unsplash.com/photo-1483347756197-71ef80e95f73?auto=format&fit=crop&w=2400&q=95");
+
+    background-size: cover;
+    background-position: center;
+
+    z-index: -10;
+
+    transform: scale(1.08);
+
+    transition: transform 0.4s ease;
+}
+
+.overlay {
+    position: fixed;
+    inset: 0;
+
+    background:
+        linear-gradient(
+            135deg,
+            rgba(1,15,28,.82),
+            rgba(0,70,100,.40),
+            rgba(1,12,25,.88)
+        );
+
+    z-index: -9;
+}
+
+
+/* =========================
+   AURORA
+========================= */
+
+.aurora {
+    position: fixed;
+
+    width: 600px;
+    height: 600px;
+
+    border-radius: 50%;
+
+    background:
+        radial-gradient(
+            circle,
+            rgba(50,220,255,.20),
+            transparent 70%
+        );
+
+    filter: blur(60px);
+
+    z-index: -8;
+
+    pointer-events: none;
+
+    animation: aurora 10s infinite alternate ease-in-out;
+}
+
+.aurora.one {
+    top: -250px;
+    left: -200px;
+}
+
+.aurora.two {
+    right: -250px;
+    bottom: -300px;
+
+    animation-delay: 3s;
+}
+
+@keyframes aurora {
+
+    0% {
+        transform: translate(0,0) scale(1);
+    }
+
+    50% {
+        transform: translate(100px,70px) scale(1.15);
+    }
+
+    100% {
+        transform: translate(-60px,120px) scale(.9);
+    }
+
+}
+
+
+/* =========================
+   SNOW
+========================= */
+
+#snow {
+    position: fixed;
+    inset: 0;
+
+    overflow: hidden;
+
+    pointer-events: none;
+
+    z-index: 50;
+}
+
+.snowflake {
+    position: absolute;
+
+    top: -30px;
+
+    color: white;
+
+    text-shadow:
+        0 0 8px white,
+        0 0 20px #62eaff;
+
+    animation:
+        snowFall linear infinite;
+}
+
+@keyframes snowFall {
+
+    0% {
+        transform:
+            translateY(-50px)
+            translateX(0)
+            rotate(0deg);
+    }
+
+    50% {
+        transform:
+            translateY(50vh)
+            translateX(40px)
+            rotate(180deg);
+    }
+
+    100% {
+        transform:
+            translateY(110vh)
+            translateX(-40px)
+            rotate(360deg);
+    }
+
+}
+
+
+/* =========================
+   NAVBAR
+========================= */
+
+.navbar {
+    position: fixed;
+
+    top: 20px;
+    left: 50%;
+
+    transform: translateX(-50%);
+
+    width: min(1100px, calc(100% - 30px));
+
+    height: 65px;
+
+    padding: 0 25px;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    border-radius: 20px;
+
+    background: rgba(255,255,255,.08);
+
+    border:
+        1px solid rgba(255,255,255,.22);
+
+    backdrop-filter: blur(20px);
+
+    box-shadow:
+        0 15px 40px rgba(0,0,0,.30);
+
+    z-index: 100;
+}
+
+.logo {
+    font-size: 20px;
+
+    font-weight: 800;
+
+    letter-spacing: 3px;
+
+    color: #eaffff;
+
+    text-shadow:
+        0 0 15px #62eaff;
+}
+
+.logo span {
+    color: #79eaff;
+}
+
+.nav-links {
+    display: flex;
+    gap: 30px;
+}
+
+.nav-links a {
+    color: rgba(255,255,255,.8);
+
+    text-decoration: none;
+
+    font-size: 12px;
+
+    font-weight: 700;
+
+    letter-spacing: 1px;
+
+    transition: .3s;
+
+    cursor: pointer;
+}
+
+.nav-links a:hover {
+    color: #83edff;
+
+    text-shadow:
+        0 0 15px #65eaff;
+}
+
+
+/* =========================
+   HERO
+========================= */
+
+.hero {
+    min-height: 100vh;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    text-align: center;
+
+    padding: 100px 20px 50px;
+
+    position: relative;
+}
+
+.hero-content {
+    animation:
+        heroIn 1.3s ease forwards;
+}
+
+@keyframes heroIn {
+
+    from {
+        opacity: 0;
+        transform:
+            translateY(60px)
+            scale(.94);
+        filter: blur(10px);
+    }
+
+    to {
+        opacity: 1;
+        transform:
+            translateY(0)
+            scale(1);
+        filter: blur(0);
+    }
+
+}
+
+
+/* =========================
+   ICE ICON
+========================= */
+
+.ice-icon {
+    width: 90px;
+    height: 90px;
+
+    margin: 0 auto 25px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 50%;
+
+    font-size: 43px;
+
+    background:
+        rgba(255,255,255,.10);
+
+    border:
+        1px solid rgba(255,255,255,.35);
+
+    backdrop-filter: blur(15px);
+
+    box-shadow:
+        0 0 25px rgba(90,225,255,.5),
+        inset 0 0 25px rgba(255,255,255,.15);
+
+    animation:
+        floating 3s infinite ease-in-out,
+        glow 2s infinite alternate;
+}
+
+@keyframes floating {
+
+    0%,100% {
+        transform: translateY(0) rotate(0);
+    }
+
+    50% {
+        transform: translateY(-12px) rotate(8deg);
+    }
+
+}
+
+@keyframes glow {
+
+    from {
+        box-shadow:
+            0 0 15px rgba(90,225,255,.3);
+    }
+
+    to {
+        box-shadow:
+            0 0 50px rgba(90,225,255,.8);
+    }
+
+}
+
+
+/* =========================
+   TEXT
+========================= */
+
+.welcome {
+    color: #9cefff;
+
+    font-size: 11px;
+
+    letter-spacing: 7px;
+
+    margin-bottom: 20px;
+}
+
+h1 {
+    font-size:
+        clamp(45px,8vw,90px);
+
+    line-height: .95;
+
+    letter-spacing: -4px;
+
+    font-weight: 800;
+
+    text-shadow:
+        0 10px 40px rgba(0,0,0,.6);
+}
+
+h1 span {
+    color: #9eefff;
+
+    text-shadow:
+        0 0 30px rgba(75,225,255,.7);
+}
+
+.subtitle {
+    margin-top: 25px;
+
+    font-size: 14px;
+
+    color:
+        rgba(255,255,255,.72);
+
+    letter-spacing: 1px;
+}
+
+
+/* =========================
+   BUTTON
+========================= */
+
+.buttons {
+    margin-top: 35px;
+
+    display: flex;
+    justify-content: center;
+
+    gap: 15px;
+
+    flex-wrap: wrap;
+}
+
+.btn {
+    position: relative;
+
+    overflow: hidden;
+
+    padding: 14px 28px;
+
+    border-radius: 50px;
+
+    text-decoration: none;
+
+    font-size: 13px;
+
+    font-weight: 700;
+
+    transition: .35s;
+}
+
+.btn::before {
+    content: "";
+
+    position: absolute;
+
+    left: -120%;
+    top: 0;
+
+    width: 100%;
+    height: 100%;
+
+    background:
+        linear-gradient(
+            90deg,
+            transparent,
+            rgba(255,255,255,.7),
+            transparent
+        );
+
+    transition: .6s;
+}
+
+.btn:hover::before {
+    left: 120%;
+}
+
+.primary {
+    color: #03131d;
+
+    background: #b8f5ff;
+
+    box-shadow:
+        0 0 25px rgba(80,225,255,.5);
+}
+
+.primary:hover {
+    transform: translateY(-6px);
+
+    box-shadow:
+        0 0 45px rgba(80,225,255,.9);
+}
+
+.secondary {
+    color: white;
+
+    background:
+        rgba(255,255,255,.08);
+
+    border:
+        1px solid rgba(255,255,255,.3);
+
+    backdrop-filter: blur(10px);
+}
+
+.secondary:hover {
+    transform: translateY(-6px);
+
+    background:
+        rgba(255,255,255,.17);
+}
+
+
+/* =========================
+   SCROLL
+========================= */
+
+.scroll {
+    position: absolute;
+
+    bottom: 20px;
+    left: 50%;
+
+    transform: translateX(-50%);
+
+    font-size: 10px;
+
+    letter-spacing: 3px;
+
+    opacity: .7;
+
+    animation:
+        scroll 1.5s infinite;
+}
+
+@keyframes scroll {
+
+    0%,100% {
+        transform:
+            translate(-50%,0);
+    }
+
+    50% {
+        transform:
+            translate(-50%,10px);
+    }
+
+}
+
+
+/* =========================
+   PROFILE
+========================= */
+
+.profile-section {
+    min-height: 100vh;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    padding: 110px 20px;
+}
+
+.profile-card {
+    width: min(900px,100%);
+
+    padding: 45px;
+
+    text-align: center;
+
+    border-radius: 30px;
+
+    background:
+        rgba(255,255,255,.09);
+
+    border:
+        1px solid rgba(255,255,255,.25);
+
+    backdrop-filter:
+        blur(25px);
+
+    box-shadow:
+        0 30px 80px rgba(0,0,0,.4),
+        inset 0 1px rgba(255,255,255,.25);
+
+    animation:
+        cardFloat 5s infinite ease-in-out;
+}
+
+@keyframes cardFloat {
+
+    0%,100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-10px);
+    }
+
+}
+
+.avatar {
+    width: 110px;
+    height: 110px;
+
+    margin: 0 auto 20px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 50%;
+
+    font-size: 50px;
+
+    background:
+        linear-gradient(
+            135deg,
+            #dffaff,
+            #54dff4,
+            #1586ae
+        );
+
+    border: 3px solid white;
+
+    box-shadow:
+        0 0 35px rgba(90,230,255,.7);
+
+    animation:
+        avatarGlow 2s infinite alternate;
+}
+
+@keyframes avatarGlow {
+
+    from {
+        box-shadow:
+            0 0 20px rgba(90,230,255,.4);
+    }
+
+    to {
+        box-shadow:
+            0 0 50px rgba(90,230,255,.9);
+    }
+
+}
+
+.profile-card h2 {
+    font-size: 30px;
+
+    margin-bottom: 10px;
+}
+
+.class-tag {
+    display: inline-block;
+
+    padding: 7px 18px;
+
+    border-radius: 50px;
+
+    color: #dffbff;
+
+    background:
+        rgba(50,210,255,.18);
+
+    border:
+        1px solid rgba(120,235,255,.5);
+}
+
+.school {
+    margin-top: 15px;
+
+    color:
+        rgba(255,255,255,.7);
+
+    letter-spacing: 2px;
+}
+
+
+/* =========================
+   PROFILE INFO
+========================= */
+
+.info {
+    margin-top: 35px;
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(3,1fr);
+
+    gap: 15px;
+}
+
+.info-box {
+    padding: 20px;
+
+    border-radius: 18px;
+
+    background:
+        rgba(255,255,255,.06);
+
+    border:
+        1px solid rgba(255,255,255,.12);
+
+    transition: .35s;
+}
+
+.info-box:hover {
+    transform:
+        translateY(-8px);
+
+    background:
+        rgba(255,255,255,.14);
+
+    border-color:
+        rgba(110,230,255,.5);
+
+    box-shadow:
+        0 10px 30px rgba(50,210,255,.15);
+}
+
+.info-box span {
+    display: block;
+
+    font-size: 28px;
+
+    margin-bottom: 8px;
+}
+
+.info-box small {
+    display: block;
+
+    color:
+        rgba(255,255,255,.45);
+
+    font-size: 10px;
+
+    margin-bottom: 5px;
+}
+
+.info-box b {
+    font-size: 12px;
+}
+
+
+/* =========================
+   PAGE TRANSITION
+========================= */
+
+.transition {
+    position: fixed;
+
+    inset: 0;
+
+    background:
+        radial-gradient(
+            circle,
+            rgba(150,245,255,.45),
+            rgba(1,20,35,.98)
+        );
+
+    backdrop-filter:
+        blur(0);
+
+    opacity: 0;
+
+    pointer-events: none;
+
+    z-index: 999;
+
+    transform:
+        scale(1.2);
+
+    transition:
+        .55s ease;
+}
+
+.transition.active {
+    opacity: 1;
+
+    transform:
+        scale(1);
+
+    backdrop-filter:
+        blur(20px);
+}
+
+.transition::before {
+    content: "";
+
+    position: absolute;
+
+    top: 50%;
+    left: -20%;
+
+    width: 140%;
+    height: 3px;
+
+    background:
+        linear-gradient(
+            90deg,
+            transparent,
+            white,
+            #71eaff,
+            white,
+            transparent
+        );
+
+    box-shadow:
+        0 0 20px #8eeeff,
+        0 0 60px #50dfff;
+
+    transform:
+        scaleX(0);
+
+    transition:
+        .7s ease;
+}
+
+.transition.active::before {
+    transform:
+        scaleX(1);
+}
+
+
+/* =========================
+   TRANSITION PARTICLES
+========================= */
+
+.particle {
+    position: fixed;
+
+    z-index: 1000;
+
+    pointer-events: none;
+
+    color: white;
+
+    text-shadow:
+        0 0 10px white,
+        0 0 25px #63eaff;
+
+    animation:
+        particle 1s ease-out forwards;
+}
+
+@keyframes particle {
+
+    0% {
+        opacity: 0;
+
+        transform:
+            translate(-50%,-50%)
+            scale(0);
+    }
+
+    30% {
+        opacity: 1;
+    }
+
+    100% {
+        opacity: 0;
+
+        transform:
+            translate(
+                calc(-50% + var(--x)),
+                calc(-50% + var(--y))
+            )
+            rotate(360deg)
+            scale(1.5);
+    }
+
+}
+
+
+/* =========================
+   MOBILE
+========================= */
+
+@media(max-width:700px) {
+
+    .navbar {
+        width:
+            calc(100% - 20px);
+
+        top: 10px;
+    }
+
+    .nav-links {
+        gap: 12px;
+    }
+
+    .nav-links a {
+        font-size: 9px;
+    }
+
+    .welcome {
+        letter-spacing: 4px;
+    }
+
+    h1 {
+        letter-spacing: -2px;
+    }
+
+    .profile-card {
+        padding: 30px 20px;
+    }
+
+    .info {
+        grid-template-columns: 1fr;
+    }
+
+}
+
+</style>
+</head>
+
+
+<body>
+
+<!-- BACKGROUND -->
+<div class="background"></div>
+
+<div class="overlay"></div>
+
+<div class="aurora one"></div>
+<div class="aurora two"></div>
+
+<!-- SALJU -->
+<div id="snow"></div>
+
+<!-- TRANSITION -->
+<div class="transition" id="transition"></div>
+
+
+<!-- NAVBAR -->
+<nav class="navbar">
+
+    <div class="logo">
+        ❄ <span>FROSTY</span>
+    </div>
+
+    <div class="nav-links">
+
+        <a href="#home" class="nav-button">
+            HOME
+        </a>
+
+        <a href="#profile" class="nav-button">
+            PROFILE
+        </a>
+
+    </div>
+
+</nav>
+
+
+<!-- HOME -->
+<section id="home" class="hero">
+
+    <div class="hero-content">
+
+        <div class="ice-icon">
+            ❄️
+        </div>
+
+        <p class="welcome">
+            WELCOME TO MY GLACIER
+        </p>
+
+        <h1>
+            MUHAMMAD<br>
+            <span>AFTUR AZIZAN</span>
+        </h1>
+
+        <p class="subtitle">
+            Student • Network Enthusiast • Future Cloud Engineer
+        </p>
+
+        <div class="buttons">
+
+            <a
+                href="#profile"
+                class="btn primary nav-button"
+            >
+                ❄ Explore Profile
+            </a>
+
+        </div>
+
+    </div>
+
+    <div class="scroll">
+        ↓<br>
+        SCROLL
+    </div>
+
+</section>
+
+
+<!-- PROFILE -->
+<section id="profile" class="profile-section">
+
+    <div class="profile-card">
+
+        <div class="avatar">
+            🥶
+        </div>
+
+        <h2>
+            Muhammad Aftur Azizan
+        </h2>
+
+        <div class="class-tag">
+            ❄ XI TKJ 4
+        </div>
+
+        <p class="school">
+            SMK TARUNA BHAKTI
+        </p>
+
+
+        <div class="info">
+
+            <div class="info-box">
+
+                <span>🍜</span>
+
+                <small>HOBI</small>
+
+                <b>
+                    Makan Mie Ayam
+                </b>
+
+            </div>
+
+
+            <div class="info-box">
+
+                <span>🌐</span>
+
+                <small>INTEREST</small>
+
+                <b>
+                    Networking
+                </b>
+
+            </div>
+
+
+            <div class="info-box">
+
+                <span>☁️</span>
+
+                <small>CITA-CITA</small>
+
+                <b>
+                    Cloud Engineer
+                </b>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<script>
+
+/* =========================
+   SALJU OTOMATIS
+========================= */
+
+const snow =
+    document.getElementById("snow");
+
+const symbols = [
+    "❄",
+    "❅",
+    "❆",
+    "✦"
+];
+
+for(let i = 0; i < 100; i++) {
+
+    const flake =
+        document.createElement("div");
+
+    flake.className =
+        "snowflake";
+
+    flake.innerHTML =
+        symbols[
+            Math.floor(
+                Math.random() *
+                symbols.length
+            )
+        ];
+
+    flake.style.left =
+        Math.random() * 100 + "%";
+
+    flake.style.fontSize =
+        (7 + Math.random() * 17) + "px";
+
+    flake.style.opacity =
+        .2 + Math.random() * .8;
+
+    flake.style.animationDuration =
+        (6 + Math.random() * 10) + "s";
+
+    flake.style.animationDelay =
+        "-" + Math.random() * 10 + "s";
+
+    snow.appendChild(flake);
+}
+
+
+/* =========================
+   PARALLAX
+========================= */
+
+document.addEventListener(
+    "mousemove",
+    function(e) {
+
+        const bg =
+            document.querySelector(
+                ".background"
+            );
+
+        const x =
+            (window.innerWidth / 2 -
+            e.clientX) / 80;
+
+        const y =
+            (window.innerHeight / 2 -
+            e.clientY) / 80;
+
+        bg.style.transform =
+            `scale(1.12)
+             translate(${x}px,${y}px)`;
+
+    }
+);
+
+
+/* =========================
+   PAGE TRANSITION
+========================= */
+
+const transition =
+    document.getElementById(
+        "transition"
+    );
+
+const buttons =
+    document.querySelectorAll(
+        ".nav-button"
+    );
+
+
+buttons.forEach(function(button) {
+
+    button.addEventListener(
+        "click",
+        function(e) {
+
+            e.preventDefault();
+
+            const target =
+                button.getAttribute(
+                    "href"
+                );
+
+
+            /* Aktifkan layar es */
+
+            transition.classList.add(
+                "active"
+            );
+
+
+            /* Buat partikel */
+
+            for(let i = 0; i < 25; i++) {
+
+                const particle =
+                    document.createElement(
+                        "div"
+                    );
+
+                particle.className =
+                    "particle";
+
+                particle.innerHTML =
+                    Math.random() > .5
+                    ? "❄"
+                    : "✦";
+
+                particle.style.left =
+                    "50%";
+
+                particle.style.top =
+                    "50%";
+
+                particle.style.setProperty(
+                    "--x",
+                    (Math.random() * 700 - 350)
+                    + "px"
+                );
+
+                particle.style.setProperty(
+                    "--y",
+                    (Math.random() * 500 - 250)
+                    + "px"
+                );
+
+                document.body.appendChild(
+                    particle
+                );
+
+                setTimeout(
+                    () => particle.remove(),
+                    1000
+                );
+
+            }
+
+
+            /* Pindah section */
+
+            setTimeout(
+                function() {
+
+                    const element =
+                        document.querySelector(
+                            target
+                        );
+
+                    if(element) {
+
+                        element.scrollIntoView({
+                            behavior: "instant"
+                        });
+
+                    }
+
+                },
+                500
+            );
+
+
+            /* Hilangkan transition */
+
+            setTimeout(
+                function() {
+
+                    transition.classList.remove(
+                        "active"
+                    );
+
+                },
+                850
+            );
+
+        }
+    );
+
+});
+
+</script>
+
+</body>
+</html>
