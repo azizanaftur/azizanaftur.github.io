@@ -1,11 +1,10 @@
-```html
 <!DOCTYPE html>
 <html lang="id">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Heavenly Profile | Aftur</title>
+<title>Heavenly | Aftur Azizan</title>
 
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Poppins:wght@300;400;500;600;700&display=swap');
@@ -22,167 +21,381 @@ html{
 
 body{
     font-family:'Poppins',sans-serif;
-    color:#26364a;
+    color:#29475d;
+    overflow-x:hidden;
     background:
         linear-gradient(
             180deg,
-            #dff4ff 0%,
-            #f7fcff 38%,
-            #ffffff 70%,
-            #eaf7ff 100%
+            #bde8ff 0%,
+            #dff5ff 18%,
+            #f7fcff 42%,
+            #ffffff 65%,
+            #dff4ff 100%
         );
-    overflow-x:hidden;
 }
 
-/* ================= BACKGROUND ================= */
+/* =====================================================
+   SKY BACKGROUND
+===================================================== */
 
 .sky{
     position:fixed;
     inset:0;
-    z-index:-5;
     overflow:hidden;
+    z-index:-10;
     pointer-events:none;
 }
+
+/* SUN */
 
 .sun{
     position:absolute;
     width:420px;
     height:420px;
-    top:-150px;
     right:-80px;
+    top:-170px;
     border-radius:50%;
-    background:rgba(255,255,255,.9);
+
+    background:rgba(255,255,255,.95);
+
     box-shadow:
-        0 0 60px rgba(255,255,255,.9),
-        0 0 150px rgba(255,238,175,.8),
-        0 0 280px rgba(255,255,255,.7);
+        0 0 40px #fff,
+        0 0 90px rgba(255,255,255,.95),
+        0 0 180px rgba(255,235,170,.8),
+        0 0 300px rgba(255,255,255,.6);
+
+    animation:sunPulse 6s ease-in-out infinite;
+}
+
+@keyframes sunPulse{
+    0%,100%{
+        transform:scale(1);
+        opacity:.9;
+    }
+
+    50%{
+        transform:scale(1.06);
+        opacity:1;
+    }
 }
 
 /* LIGHT RAYS */
 
-.ray{
+.light{
     position:absolute;
-    width:500px;
-    height:900px;
-    top:-300px;
-    right:150px;
+    width:550px;
+    height:1000px;
+    top:-400px;
+    right:80px;
+
     background:linear-gradient(
         180deg,
-        rgba(255,255,255,.45),
+        rgba(255,255,255,.35),
         transparent
     );
+
+    filter:blur(35px);
     transform:rotate(25deg);
-    filter:blur(30px);
+    animation:lightMove 8s ease-in-out infinite;
 }
 
-/* CLOUDS */
+@keyframes lightMove{
+    0%,100%{
+        opacity:.35;
+        transform:rotate(25deg) translateX(0);
+    }
+
+    50%{
+        opacity:.65;
+        transform:rotate(25deg) translateX(-50px);
+    }
+}
+
+/* =====================================================
+   CLOUD SYSTEM
+===================================================== */
 
 .cloud{
     position:absolute;
-    background:rgba(255,255,255,.8);
+    height:60px;
     border-radius:100px;
-    filter:blur(3px);
-    box-shadow:0 20px 50px rgba(116,180,215,.18);
+
+    background:
+        linear-gradient(
+            180deg,
+            rgba(255,255,255,.95),
+            rgba(238,249,255,.75)
+        );
+
+    filter:blur(2px);
+
+    box-shadow:
+        0 15px 35px rgba(93,160,195,.15),
+        0 0 30px rgba(255,255,255,.8);
 }
 
 .cloud::before,
 .cloud::after{
     content:"";
     position:absolute;
-    background:inherit;
     border-radius:50%;
+    background:inherit;
 }
 
 .cloud::before{
     width:100px;
     height:100px;
-    left:35px;
-    bottom:15px;
-}
-
-.cloud::after{
-    width:150px;
-    height:150px;
-    right:35px;
+    left:30px;
     bottom:5px;
 }
 
-.cloud1{
-    width:300px;
-    height:75px;
-    top:15%;
-    left:-100px;
-    animation:cloudMove 35s linear infinite;
+.cloud::after{
+    width:140px;
+    height:140px;
+    right:40px;
+    bottom:0;
 }
 
-.cloud2{
-    width:400px;
-    height:90px;
-    top:45%;
-    right:-180px;
-    animation:cloudMove2 42s linear infinite;
+/* CLOUD 1 */
+
+.c1{
+    width:320px;
+    top:13%;
+    left:-350px;
+    animation:cloudLeft 38s linear infinite;
 }
 
-.cloud3{
+/* CLOUD 2 */
+
+.c2{
+    width:500px;
+    top:25%;
+    right:-550px;
+    animation:cloudRight 48s linear infinite;
+    transform:scale(.8);
+}
+
+/* CLOUD 3 */
+
+.c3{
     width:260px;
-    height:65px;
-    top:75%;
-    left:-100px;
-    animation:cloudMove 45s linear infinite;
+    top:39%;
+    left:-300px;
+    animation:cloudLeft 32s linear infinite;
+    animation-delay:8s;
+    transform:scale(.7);
 }
 
-@keyframes cloudMove{
-    from{transform:translateX(-100px)}
-    to{transform:translateX(120vw)}
+/* CLOUD 4 */
+
+.c4{
+    width:430px;
+    top:54%;
+    right:-500px;
+    animation:cloudRight 43s linear infinite;
+    animation-delay:4s;
+    transform:scale(.9);
 }
 
-@keyframes cloudMove2{
-    from{transform:translateX(100px)}
-    to{transform:translateX(-120vw)}
+/* CLOUD 5 */
+
+.c5{
+    width:350px;
+    top:70%;
+    left:-400px;
+    animation:cloudLeft 50s linear infinite;
+    animation-delay:12s;
+    transform:scale(.8);
 }
 
-/* PARTICLES */
+/* CLOUD 6 */
+
+.c6{
+    width:550px;
+    top:83%;
+    right:-600px;
+    animation:cloudRight 55s linear infinite;
+    animation-delay:15s;
+    transform:scale(1.1);
+}
+
+@keyframes cloudLeft{
+
+    from{
+        transform:translateX(0) scale(.8);
+    }
+
+    to{
+        transform:translateX(150vw) scale(.8);
+    }
+}
+
+@keyframes cloudRight{
+
+    from{
+        transform:translateX(0) scale(.9);
+    }
+
+    to{
+        transform:translateX(-150vw) scale(.9);
+    }
+}
+
+/* =====================================================
+   MINI CLOUDS
+===================================================== */
+
+.mini-cloud{
+    position:absolute;
+    width:100px;
+    height:25px;
+
+    background:rgba(255,255,255,.6);
+    border-radius:50px;
+
+    filter:blur(3px);
+
+    animation:miniFloat 7s ease-in-out infinite;
+}
+
+.mini-cloud::before{
+    content:"";
+    position:absolute;
+    width:45px;
+    height:45px;
+    border-radius:50%;
+    background:inherit;
+    left:15px;
+    bottom:0;
+}
+
+.mini-cloud::after{
+    content:"";
+    position:absolute;
+    width:60px;
+    height:60px;
+    border-radius:50%;
+    background:inherit;
+    right:10px;
+    bottom:0;
+}
+
+.mc1{
+    top:18%;
+    left:20%;
+}
+
+.mc2{
+    top:48%;
+    left:72%;
+    animation-delay:2s;
+}
+
+.mc3{
+    top:68%;
+    left:28%;
+    animation-delay:4s;
+}
+
+@keyframes miniFloat{
+
+    0%,100%{
+        transform:translateY(0);
+    }
+
+    50%{
+        transform:translateY(-20px);
+    }
+}
+
+/* =====================================================
+   PARTICLES
+===================================================== */
 
 .particle{
     position:absolute;
-    width:5px;
-    height:5px;
-    background:white;
+    width:4px;
+    height:4px;
+
     border-radius:50%;
-    box-shadow:0 0 15px white;
-    animation:float 6s ease-in-out infinite;
+    background:white;
+
+    box-shadow:
+        0 0 8px white,
+        0 0 20px rgba(255,255,255,.8);
+
+    animation:particleFloat 6s ease-in-out infinite;
 }
 
-.p1{left:15%;top:20%;animation-delay:0s}
-.p2{left:75%;top:30%;animation-delay:1s}
-.p3{left:35%;top:65%;animation-delay:2s}
-.p4{left:85%;top:70%;animation-delay:3s}
-.p5{left:50%;top:15%;animation-delay:4s}
+.p1{left:8%;top:25%;animation-delay:0s}
+.p2{left:18%;top:65%;animation-delay:1s}
+.p3{left:35%;top:18%;animation-delay:2s}
+.p4{left:48%;top:72%;animation-delay:3s}
+.p5{left:60%;top:32%;animation-delay:1.5s}
+.p6{left:72%;top:75%;animation-delay:4s}
+.p7{left:85%;top:22%;animation-delay:2.5s}
+.p8{left:92%;top:58%;animation-delay:5s}
 
-@keyframes float{
-    0%,100%{transform:translateY(0);opacity:.4}
-    50%{transform:translateY(-25px);opacity:1}
+@keyframes particleFloat{
+
+    0%,100%{
+        transform:translateY(0) scale(.7);
+        opacity:.2;
+    }
+
+    50%{
+        transform:translateY(-35px) scale(1.3);
+        opacity:1;
+    }
 }
 
-/* ================= NAVBAR ================= */
+/* =====================================================
+   NAVBAR
+===================================================== */
 
 nav{
     position:fixed;
+
     top:20px;
     left:50%;
     transform:translateX(-50%);
+
     width:min(1100px,92%);
+
     padding:14px 25px;
+
     display:flex;
-    align-items:center;
     justify-content:space-between;
-    background:rgba(255,255,255,.5);
-    backdrop-filter:blur(20px);
-    -webkit-backdrop-filter:blur(20px);
+    align-items:center;
+
+    background:rgba(255,255,255,.48);
+
+    backdrop-filter:blur(25px);
+    -webkit-backdrop-filter:blur(25px);
+
     border:1px solid rgba(255,255,255,.8);
+
     border-radius:50px;
-    box-shadow:0 15px 40px rgba(80,150,190,.12);
-    z-index:100;
+
+    box-shadow:
+        0 15px 45px rgba(72,145,180,.12);
+
+    z-index:1000;
+
+    animation:navDrop 1s ease;
+}
+
+@keyframes navDrop{
+
+    from{
+        opacity:0;
+        transform:translate(-50%,-30px);
+    }
+
+    to{
+        opacity:1;
+        transform:translate(-50%,0);
+    }
 }
 
 .logo{
@@ -193,87 +406,180 @@ nav{
 }
 
 .logo span{
-    color:#7fb8d8;
+    color:#e0b65e;
+    display:inline-block;
+    animation:spinStar 5s linear infinite;
+}
+
+@keyframes spinStar{
+
+    from{
+        transform:rotate(0deg);
+    }
+
+    to{
+        transform:rotate(360deg);
+    }
 }
 
 nav ul{
     display:flex;
+    gap:30px;
     list-style:none;
-    gap:28px;
 }
 
 nav a{
-    color:#36566e;
+    color:#3b6078;
     text-decoration:none;
     font-size:13px;
-    font-weight:500;
+    position:relative;
+}
+
+nav a::after{
+    content:"";
+    position:absolute;
+
+    left:50%;
+    bottom:-7px;
+
+    width:0;
+    height:2px;
+
+    background:#82c6e6;
+
     transition:.3s;
+    transform:translateX(-50%);
 }
 
-nav a:hover{
-    color:#5ba8d1;
+nav a:hover::after{
+    width:100%;
 }
 
-/* ================= HERO ================= */
+/* =====================================================
+   HERO
+===================================================== */
 
 .hero{
     min-height:100vh;
+
     display:flex;
     align-items:center;
     justify-content:center;
+
     text-align:center;
+
     padding:120px 20px 80px;
+
     position:relative;
 }
 
 .hero-content{
-    max-width:850px;
+    max-width:900px;
+
+    animation:heroReveal 1.5s ease;
+}
+
+@keyframes heroReveal{
+
+    from{
+        opacity:0;
+        transform:translateY(35px);
+    }
+
+    to{
+        opacity:1;
+        transform:translateY(0);
+    }
 }
 
 .badge{
+
     display:inline-flex;
-    align-items:center;
-    gap:8px;
-    padding:9px 18px;
-    border-radius:30px;
+
+    padding:10px 20px;
+
+    border-radius:40px;
+
     background:rgba(255,255,255,.55);
+
     border:1px solid rgba(255,255,255,.9);
-    backdrop-filter:blur(15px);
+
+    backdrop-filter:blur(20px);
+
     color:#6595b1;
-    font-size:12px;
-    letter-spacing:2px;
-    margin-bottom:25px;
+
+    font-size:11px;
+
+    letter-spacing:3px;
+
+    margin-bottom:30px;
+
+    box-shadow:0 10px 30px rgba(80,160,200,.1);
+
+    animation:badgeFloat 4s ease-in-out infinite;
 }
 
 .badge::before{
     content:"✦";
-    color:#e6b75c;
+    color:#e5bd6e;
+    margin-right:8px;
+}
+
+@keyframes badgeFloat{
+
+    0%,100%{
+        transform:translateY(0);
+    }
+
+    50%{
+        transform:translateY(-7px);
+    }
 }
 
 .hero h1{
+
     font-family:'Cormorant Garamond',serif;
-    font-size:clamp(65px,10vw,125px);
-    line-height:.85;
+
+    font-size:clamp(75px,11vw,145px);
+
+    line-height:.78;
+
     color:#234d6a;
+
+    letter-spacing:-3px;
+
     text-shadow:
-        0 10px 30px rgba(70,150,190,.15);
+        0 10px 35px rgba(70,150,190,.15);
+
 }
 
 .hero h1 span{
+
     display:block;
+
     color:#8bc6e4;
+
     font-style:italic;
+
+    text-shadow:
+        0 0 40px rgba(255,255,255,.8);
 }
 
 .hero p{
-    max-width:600px;
-    margin:35px auto;
-    line-height:1.8;
+
+    max-width:650px;
+
+    margin:40px auto;
+
+    line-height:1.9;
+
     color:#668196;
-    font-size:15px;
+
+    font-size:14px;
 }
 
 .hero-buttons{
+
     display:flex;
     justify-content:center;
     gap:15px;
@@ -281,295 +587,729 @@ nav a:hover{
 }
 
 .btn{
-    padding:14px 25px;
-    border-radius:40px;
+
+    padding:15px 27px;
+
+    border-radius:50px;
+
     text-decoration:none;
-    font-size:13px;
-    transition:.3s;
+
+    font-size:12px;
+
+    transition:.4s;
+
+    position:relative;
+
+    overflow:hidden;
+}
+
+.btn::before{
+
+    content:"";
+
+    position:absolute;
+
+    top:0;
+    left:-100%;
+
+    width:70%;
+    height:100%;
+
+    background:linear-gradient(
+        90deg,
+        transparent,
+        rgba(255,255,255,.5),
+        transparent
+    );
+
+    transform:skewX(-20deg);
+
+    transition:.7s;
+}
+
+.btn:hover::before{
+    left:130%;
 }
 
 .btn-primary{
+
     color:white;
-    background:linear-gradient(135deg,#6eb9df,#8dcbea);
-    box-shadow:0 12px 30px rgba(75,160,205,.25);
+
+    background:
+        linear-gradient(
+            135deg,
+            #69b8df,
+            #9bd7ee
+        );
+
+    box-shadow:
+        0 15px 35px rgba(75,160,205,.3);
 }
 
 .btn-secondary{
+
     color:#52758c;
+
     background:rgba(255,255,255,.6);
+
     border:1px solid rgba(255,255,255,.9);
+
     backdrop-filter:blur(10px);
 }
 
 .btn:hover{
-    transform:translateY(-4px);
+
+    transform:translateY(-5px) scale(1.02);
 }
 
-/* ================= SECTIONS ================= */
+/* =====================================================
+   SECTIONS
+===================================================== */
 
 section{
-    padding:110px 7%;
+    padding:120px 7%;
 }
 
 .section-title{
+
     text-align:center;
-    margin-bottom:55px;
+
+    margin-bottom:60px;
+
 }
 
 .section-title small{
+
     color:#85b8d2;
-    letter-spacing:4px;
-    font-size:11px;
+
+    letter-spacing:5px;
+
+    font-size:10px;
 }
 
 .section-title h2{
+
     font-family:'Cormorant Garamond',serif;
-    font-size:55px;
+
+    font-size:60px;
+
     color:#315a73;
+
     margin-top:8px;
 }
 
-/* ================= PROFILE ================= */
+/* =====================================================
+   GLASS
+===================================================== */
+
+.glass{
+
+    background:rgba(255,255,255,.45);
+
+    border:1px solid rgba(255,255,255,.85);
+
+    backdrop-filter:blur(25px);
+
+    -webkit-backdrop-filter:blur(25px);
+
+    border-radius:30px;
+
+    box-shadow:
+        0 25px 80px rgba(79,145,180,.12);
+
+    transition:.45s;
+}
+
+.glass:hover{
+
+    box-shadow:
+        0 35px 100px rgba(79,145,180,.18);
+
+    border-color:rgba(255,255,255,1);
+}
+
+/* =====================================================
+   PROFILE
+===================================================== */
 
 .profile{
+
     max-width:1100px;
+
     margin:auto;
+
     display:grid;
+
     grid-template-columns:1fr 1.4fr;
+
     gap:35px;
 }
 
-.glass{
-    background:rgba(255,255,255,.48);
-    border:1px solid rgba(255,255,255,.85);
-    backdrop-filter:blur(25px);
-    -webkit-backdrop-filter:blur(25px);
-    border-radius:30px;
-    box-shadow:0 25px 70px rgba(79,145,180,.12);
+.profile-card{
+
+    padding:50px 30px;
+
+    text-align:center;
+
+    animation:cardFloat 6s ease-in-out infinite;
 }
 
-.profile-card{
-    padding:45px 30px;
-    text-align:center;
+@keyframes cardFloat{
+
+    0%,100%{
+        transform:translateY(0);
+    }
+
+    50%{
+        transform:translateY(-8px);
+    }
 }
 
 .avatar{
-    width:150px;
-    height:150px;
+
+    width:165px;
+    height:165px;
+
     margin:auto;
+
     border-radius:50%;
+
     padding:7px;
-    background:linear-gradient(135deg,#fff,#9bd5ef);
+
+    background:
+        linear-gradient(
+            135deg,
+            white,
+            #8ed2ee,
+            white
+        );
+
     box-shadow:
-        0 15px 45px rgba(80,170,210,.25),
-        0 0 0 10px rgba(255,255,255,.25);
+        0 20px 60px rgba(80,170,210,.25),
+        0 0 0 12px rgba(255,255,255,.2);
 }
 
 .avatar div{
+
     width:100%;
     height:100%;
+
     border-radius:50%;
+
     display:flex;
+
     align-items:center;
     justify-content:center;
-    background:linear-gradient(135deg,#d9f4ff,#ffffff);
+
+    background:
+        radial-gradient(
+            circle at 30% 25%,
+            white,
+            #d8f3ff
+        );
+
     font-family:'Cormorant Garamond',serif;
-    font-size:65px;
+
+    font-size:75px;
+
     color:#6da9c7;
 }
 
 .profile-card h3{
-    margin-top:25px;
+
+    margin-top:28px;
+
     font-family:'Cormorant Garamond',serif;
-    font-size:35px;
+
+    font-size:37px;
+
     color:#315b74;
 }
 
 .profile-card p{
+
     color:#7a94a5;
+
     font-size:13px;
+
     margin-top:5px;
 }
 
 .info{
-    padding:40px;
+
+    padding:45px;
 }
 
 .info h3{
+
     font-family:'Cormorant Garamond',serif;
-    font-size:38px;
+
+    font-size:42px;
+
     color:#315b74;
+
     margin-bottom:20px;
 }
 
 .info p{
+
     line-height:1.9;
+
     color:#718899;
+
     font-size:14px;
 }
 
 .info-grid{
+
     margin-top:30px;
+
     display:grid;
+
     grid-template-columns:1fr 1fr;
+
     gap:15px;
 }
 
 .info-box{
+
     padding:18px;
+
     border-radius:18px;
+
     background:rgba(255,255,255,.45);
+
     border:1px solid rgba(255,255,255,.7);
+
+    transition:.35s;
+}
+
+.info-box:hover{
+
+    transform:translateY(-5px);
+
+    background:rgba(255,255,255,.7);
 }
 
 .info-box small{
+
     display:block;
+
     color:#9ab5c5;
-    font-size:10px;
-    letter-spacing:1px;
+
+    font-size:9px;
+
+    letter-spacing:2px;
 }
 
 .info-box strong{
+
     display:block;
+
     color:#456b82;
-    margin-top:5px;
+
+    margin-top:6px;
+
     font-size:13px;
 }
 
-/* ================= SKILLS ================= */
+/* =====================================================
+   SKILLS
+===================================================== */
 
 .skills{
+
     max-width:1000px;
+
     margin:auto;
+
     display:grid;
+
     grid-template-columns:repeat(3,1fr);
+
     gap:20px;
 }
 
 .skill{
-    padding:30px;
+
+    padding:35px 25px;
+
     text-align:center;
-    transition:.35s;
+
+    transition:.45s;
 }
 
 .skill:hover{
-    transform:translateY(-10px);
+
+    transform:
+        translateY(-12px)
+        scale(1.02);
 }
 
 .skill-icon{
-    width:65px;
-    height:65px;
+
+    width:70px;
+    height:70px;
+
     display:flex;
+
     align-items:center;
     justify-content:center;
+
     margin:auto;
-    border-radius:20px;
+
+    border-radius:22px;
+
     background:rgba(255,255,255,.65);
-    font-size:28px;
-    box-shadow:0 10px 30px rgba(80,150,190,.1);
+
+    font-size:30px;
+
+    box-shadow:
+        0 15px 35px rgba(80,150,190,.1);
+
+    transition:.5s;
+}
+
+.skill:hover .skill-icon{
+
+    transform:
+        rotate(8deg)
+        scale(1.1);
+
+    box-shadow:
+        0 20px 45px rgba(80,150,190,.2);
 }
 
 .skill h3{
+
     margin-top:20px;
+
     color:#446b82;
+
     font-size:16px;
 }
 
 .skill p{
+
     margin-top:8px;
+
     color:#8ba0ae;
+
     font-size:12px;
-    line-height:1.6;
+
+    line-height:1.7;
 }
 
-/* ================= PROJECT ================= */
+/* =====================================================
+   PROJECTS
+===================================================== */
 
 .projects{
+
     max-width:1100px;
+
     margin:auto;
+
     display:grid;
+
     grid-template-columns:repeat(3,1fr);
+
     gap:22px;
 }
 
 .project{
-    padding:30px;
-    min-height:230px;
+
+    padding:32px;
+
+    min-height:240px;
+
     position:relative;
+
     overflow:hidden;
-    transition:.35s;
+
+    transition:.45s;
+}
+
+.project::after{
+
+    content:"";
+
+    position:absolute;
+
+    width:150px;
+    height:150px;
+
+    border-radius:50%;
+
+    background:rgba(180,225,245,.25);
+
+    top:-70px;
+    right:-70px;
+
+    filter:blur(10px);
+
+    transition:.5s;
 }
 
 .project:hover{
-    transform:translateY(-8px);
+
+    transform:translateY(-12px);
+}
+
+.project:hover::after{
+
+    transform:scale(1.5);
+
+    background:rgba(180,225,245,.4);
 }
 
 .project-number{
+
     font-family:'Cormorant Garamond',serif;
-    font-size:70px;
-    color:rgba(115,180,210,.15);
+
+    font-size:75px;
+
+    color:rgba(115,180,210,.14);
+
     position:absolute;
+
     top:0;
+
     right:20px;
 }
 
 .project h3{
-    margin-top:40px;
+
+    margin-top:50px;
+
     font-family:'Cormorant Garamond',serif;
-    font-size:30px;
+
+    font-size:32px;
+
     color:#426c83;
 }
 
 .project p{
+
     color:#8298a7;
+
     font-size:12px;
-    line-height:1.7;
+
+    line-height:1.8;
+
     margin-top:10px;
 }
 
-/* ================= QUOTE ================= */
+/* =====================================================
+   WORDS OF TODAY
+===================================================== */
+
+.today{
+
+    max-width:1000px;
+
+    margin:auto;
+
+    padding:70px 45px;
+
+    text-align:center;
+
+    position:relative;
+
+    overflow:hidden;
+}
+
+.today::before{
+
+    content:"";
+
+    position:absolute;
+
+    width:350px;
+    height:350px;
+
+    border-radius:50%;
+
+    background:
+        radial-gradient(
+            circle,
+            rgba(255,255,255,.9),
+            transparent 70%
+        );
+
+    top:-180px;
+    left:-100px;
+}
+
+.today-label{
+
+    color:#d2a84f;
+
+    font-size:11px;
+
+    letter-spacing:5px;
+}
+
+.today h2{
+
+    font-family:'Cormorant Garamond',serif;
+
+    font-size:55px;
+
+    color:#315a73;
+
+    margin:15px 0 20px;
+}
+
+.today-text{
+
+    max-width:700px;
+
+    margin:auto;
+
+    font-family:'Cormorant Garamond',serif;
+
+    font-size:32px;
+
+    line-height:1.35;
+
+    font-style:italic;
+
+    color:#52758c;
+}
+
+.today-author{
+
+    margin-top:25px;
+
+    color:#91a8b7;
+
+    font-size:11px;
+
+    letter-spacing:2px;
+}
+
+/* =====================================================
+   QUOTE
+===================================================== */
 
 .quote{
+
     text-align:center;
+
     max-width:850px;
+
     margin:auto;
-    padding:70px 30px;
+
+    padding:80px 30px;
 }
 
 .quote-icon{
+
     font-size:35px;
+
     color:#e5bd6e;
+
+    animation:starGlow 2s ease-in-out infinite;
+}
+
+@keyframes starGlow{
+
+    0%,100%{
+        transform:scale(1);
+        filter:drop-shadow(0 0 0 transparent);
+    }
+
+    50%{
+        transform:scale(1.25);
+        filter:drop-shadow(0 0 15px #f5d98d);
+    }
 }
 
 .quote p{
+
     font-family:'Cormorant Garamond',serif;
-    font-size:38px;
-    line-height:1.25;
+
+    font-size:40px;
+
+    line-height:1.3;
+
     color:#456b80;
+
     margin:20px 0;
+
     font-style:italic;
 }
 
 .quote small{
+
     color:#91a8b7;
 }
 
-/* ================= FOOTER ================= */
+/* =====================================================
+   FOOTER
+===================================================== */
 
 footer{
-    padding:50px 20px;
+
+    padding:70px 20px;
+
     text-align:center;
+
     color:#8ba5b5;
+
     font-size:12px;
 }
 
 footer .wings{
-    font-size:25px;
-    margin-bottom:15px;
+
+    font-size:30px;
+
+    margin-bottom:18px;
+
     color:#a8d2e7;
+
+    letter-spacing:15px;
+
+    animation:footerFloat 4s ease-in-out infinite;
 }
 
-/* ================= RESPONSIVE ================= */
+@keyframes footerFloat{
+
+    0%,100%{
+        transform:translateY(0);
+    }
+
+    50%{
+        transform:translateY(-8px);
+    }
+}
+
+/* =====================================================
+   SCROLL REVEAL
+===================================================== */
+
+.reveal{
+
+    opacity:0;
+
+    transform:translateY(40px);
+
+    transition:
+        opacity 1s ease,
+        transform 1s ease;
+}
+
+.reveal.active{
+
+    opacity:1;
+
+    transform:translateY(0);
+}
+
+/* =====================================================
+   MOBILE
+===================================================== */
 
 @media(max-width:800px){
 
@@ -595,11 +1335,15 @@ footer .wings{
     }
 
     .hero h1{
-        font-size:65px;
+        font-size:70px;
     }
 
     .section-title h2{
-        font-size:45px;
+        font-size:48px;
+    }
+
+    .today-text{
+        font-size:27px;
     }
 
     .quote p{
@@ -617,8 +1361,24 @@ footer .wings{
         font-size:55px;
     }
 
+    .hero p{
+        font-size:13px;
+    }
+
     .info-grid{
         grid-template-columns:1fr;
+    }
+
+    .info{
+        padding:30px;
+    }
+
+    .today{
+        padding:55px 25px;
+    }
+
+    .today h2{
+        font-size:43px;
     }
 }
 </style>
@@ -626,26 +1386,49 @@ footer .wings{
 
 <body>
 
-<!-- BACKGROUND -->
+<!-- =====================================================
+     SKY
+===================================================== -->
+
 <div class="sky">
 
     <div class="sun"></div>
-    <div class="ray"></div>
+    <div class="light"></div>
 
-    <div class="cloud cloud1"></div>
-    <div class="cloud cloud2"></div>
-    <div class="cloud cloud3"></div>
+    <!-- BIG CLOUDS -->
+
+    <div class="cloud c1"></div>
+    <div class="cloud c2"></div>
+    <div class="cloud c3"></div>
+    <div class="cloud c4"></div>
+    <div class="cloud c5"></div>
+    <div class="cloud c6"></div>
+
+    <!-- SMALL CLOUDS -->
+
+    <div class="mini-cloud mc1"></div>
+    <div class="mini-cloud mc2"></div>
+    <div class="mini-cloud mc3"></div>
+
+    <!-- PARTICLES -->
 
     <div class="particle p1"></div>
     <div class="particle p2"></div>
     <div class="particle p3"></div>
     <div class="particle p4"></div>
     <div class="particle p5"></div>
+    <div class="particle p6"></div>
+    <div class="particle p7"></div>
+    <div class="particle p8"></div>
 
 </div>
 
-<!-- NAVBAR -->
+<!-- =====================================================
+     NAVBAR
+===================================================== -->
+
 <nav>
+
     <div class="logo">
         Aftur<span>✦</span>
     </div>
@@ -655,10 +1438,15 @@ footer .wings{
         <li><a href="#profile">Profile</a></li>
         <li><a href="#skills">Skills</a></li>
         <li><a href="#projects">Projects</a></li>
+        <li><a href="#today">Today</a></li>
     </ul>
+
 </nav>
 
-<!-- HERO -->
+<!-- =====================================================
+     HERO
+===================================================== -->
+
 <section class="hero" id="home">
 
     <div class="hero-content">
@@ -673,42 +1461,52 @@ footer .wings{
         </h1>
 
         <p>
-            A student who dreams beyond the clouds.
-            Exploring technology, networking, and the endless
-            possibilities of the digital world.
+            Somewhere between the clouds and the code,
+            I'm building my own path through technology,
+            one dream, one project, and one line of code at a time.
         </p>
 
         <div class="hero-buttons">
+
             <a href="#profile" class="btn btn-primary">
                 Explore My World ✦
             </a>
 
-            <a href="#projects" class="btn btn-secondary">
-                View Projects
+            <a href="#today" class="btn btn-secondary">
+                Words of Today
             </a>
+
         </div>
 
     </div>
 
 </section>
 
-<!-- PROFILE -->
+<!-- =====================================================
+     PROFILE
+===================================================== -->
+
 <section id="profile">
 
-    <div class="section-title">
+    <div class="section-title reveal">
+
         <small>ABOUT ME</small>
+
         <h2>Heavenly Profile</h2>
+
     </div>
 
     <div class="profile">
 
-        <div class="glass profile-card">
+        <div class="glass profile-card reveal">
 
             <div class="avatar">
                 <div>A</div>
             </div>
 
-            <h3>Muhammad Aftur Azizan</h3>
+            <h3>
+                Muhammad Aftur Azizan
+            </h3>
 
             <p>
                 Network & Cloud Enthusiast
@@ -716,15 +1514,18 @@ footer .wings{
 
         </div>
 
-        <div class="glass info">
+        <div class="glass info reveal">
 
-            <h3>About My Journey</h3>
+            <h3>
+                About My Journey
+            </h3>
 
             <p>
                 Saya adalah seorang siswa yang tertarik dengan dunia
-                teknologi, khususnya networking, server, cloud computing,
-                dan infrastructure. Saya terus belajar dan mencoba
-                membangun sesuatu yang lebih baik dari setiap project.
+                teknologi, networking, server, dan cloud computing.
+                Bagi saya, belajar teknologi bukan cuma tentang
+                menghafal command, tapi tentang memahami bagaimana
+                semuanya bekerja dan menciptakan sesuatu dari nol.
             </p>
 
             <div class="info-grid">
@@ -757,34 +1558,48 @@ footer .wings{
 
 </section>
 
-<!-- SKILLS -->
+<!-- =====================================================
+     SKILLS
+===================================================== -->
+
 <section id="skills">
 
-    <div class="section-title">
+    <div class="section-title reveal">
+
         <small>WHAT I LEARN</small>
+
         <h2>My Skills</h2>
+
     </div>
 
     <div class="skills">
 
-        <div class="glass skill">
+        <div class="glass skill reveal">
 
-            <div class="skill-icon">☁</div>
+            <div class="skill-icon">
+                ☁
+            </div>
 
-            <h3>Cloud Computing</h3>
+            <h3>
+                Cloud Computing
+            </h3>
 
             <p>
-                Learning cloud infrastructure,
+                Exploring cloud infrastructure,
                 deployment and modern technologies.
             </p>
 
         </div>
 
-        <div class="glass skill">
+        <div class="glass skill reveal">
 
-            <div class="skill-icon">⌘</div>
+            <div class="skill-icon">
+                ⌘
+            </div>
 
-            <h3>Networking</h3>
+            <h3>
+                Networking
+            </h3>
 
             <p>
                 Cisco, MikroTik, VLAN,
@@ -793,11 +1608,15 @@ footer .wings{
 
         </div>
 
-        <div class="glass skill">
+        <div class="glass skill reveal">
 
-            <div class="skill-icon">◈</div>
+            <div class="skill-icon">
+                ◈
+            </div>
 
-            <h3>Linux & Server</h3>
+            <h3>
+                Linux & Server
+            </h3>
 
             <p>
                 Exploring Linux administration,
@@ -810,21 +1629,31 @@ footer .wings{
 
 </section>
 
-<!-- PROJECTS -->
+<!-- =====================================================
+     PROJECTS
+===================================================== -->
+
 <section id="projects">
 
-    <div class="section-title">
+    <div class="section-title reveal">
+
         <small>MY CREATIONS</small>
+
         <h2>Projects</h2>
+
     </div>
 
     <div class="projects">
 
-        <div class="glass project">
+        <div class="glass project reveal">
 
-            <div class="project-number">01</div>
+            <div class="project-number">
+                01
+            </div>
 
-            <h3>Docker Web</h3>
+            <h3>
+                Docker Web
+            </h3>
 
             <p>
                 Multi-container website menggunakan
@@ -834,11 +1663,15 @@ footer .wings{
 
         </div>
 
-        <div class="glass project">
+        <div class="glass project reveal">
 
-            <div class="project-number">02</div>
+            <div class="project-number">
+                02
+            </div>
 
-            <h3>Network Lab</h3>
+            <h3>
+                Network Lab
+            </h3>
 
             <p>
                 Simulasi jaringan menggunakan Cisco
@@ -848,11 +1681,15 @@ footer .wings{
 
         </div>
 
-        <div class="glass project">
+        <div class="glass project reveal">
 
-            <div class="project-number">03</div>
+            <div class="project-number">
+                03
+            </div>
 
-            <h3>Cloud Journey</h3>
+            <h3>
+                Cloud Journey
+            </h3>
 
             <p>
                 Mempelajari konsep cloud computing
@@ -866,12 +1703,50 @@ footer .wings{
 
 </section>
 
-<!-- QUOTE -->
+<!-- =====================================================
+     WORDS OF TODAY
+===================================================== -->
+
+<section id="today">
+
+    <div class="glass today reveal">
+
+        <div class="today-label">
+            ✦ WORDS OF TODAY ✦
+        </div>
+
+        <h2>
+            Today's Energy
+        </h2>
+
+        <div class="today-text">
+
+            "Jangan takut punya mimpi yang
+            kelihatan terlalu tinggi.
+            Namanya juga mimpi —
+            memang tempatnya di atas awan."
+
+        </div>
+
+        <div class="today-author">
+            — AFTUR AZIZAN
+        </div>
+
+    </div>
+
+</section>
+
+<!-- =====================================================
+     FINAL QUOTE
+===================================================== -->
+
 <section>
 
-    <div class="glass quote">
+    <div class="glass quote reveal">
 
-        <div class="quote-icon">✦</div>
+        <div class="quote-icon">
+            ✦
+        </div>
 
         <p>
             "The sky is not the limit.
@@ -886,10 +1761,15 @@ footer .wings{
 
 </section>
 
-<!-- FOOTER -->
+<!-- =====================================================
+     FOOTER
+===================================================== -->
+
 <footer>
 
-    <div class="wings">☁ ✦ ☁</div>
+    <div class="wings">
+        ☁ ✦ ☁
+    </div>
 
     <p>
         © 2026 Muhammad Aftur Azizan
@@ -900,6 +1780,121 @@ footer .wings{
     </p>
 
 </footer>
+
+<!-- =====================================================
+     JAVASCRIPT
+===================================================== -->
+
+<script>
+
+/* SCROLL REVEAL */
+
+const reveals =
+document.querySelectorAll(".reveal");
+
+const observer =
+new IntersectionObserver(
+(entries) => {
+
+    entries.forEach(entry => {
+
+        if(entry.isIntersecting){
+
+            entry.target.classList.add("active");
+
+        }
+
+    });
+
+},
+{
+    threshold:0.12
+});
+
+reveals.forEach(
+element => observer.observe(element)
+);
+
+
+/* MOUSE PARALLAX */
+
+document.addEventListener(
+"mousemove",
+(e) => {
+
+    const x =
+        (e.clientX / window.innerWidth - .5);
+
+    const y =
+        (e.clientY / window.innerHeight - .5);
+
+    const clouds =
+        document.querySelectorAll(".mini-cloud");
+
+    clouds.forEach((cloud,index) => {
+
+        const strength =
+            (index + 1) * 12;
+
+        cloud.style.transform =
+            `translate(${x * strength}px,
+                        ${y * strength}px)`;
+
+    });
+
+    const light =
+        document.querySelector(".light");
+
+    light.style.transform =
+        `rotate(25deg)
+         translate(${x * 30}px,
+                   ${y * 20}px)`;
+
+});
+
+
+/* RANDOM PARTICLE MOVEMENT */
+
+const particles =
+document.querySelectorAll(".particle");
+
+particles.forEach((particle,index) => {
+
+    particle.style.animationDuration =
+        `${5 + Math.random() * 5}s`;
+
+    particle.style.animationDelay =
+        `${Math.random() * 5}s`;
+
+});
+
+
+/* GENTLE HERO PARALLAX */
+
+const hero =
+document.querySelector(".hero-content");
+
+window.addEventListener(
+"scroll",
+() => {
+
+    const scroll =
+        window.scrollY;
+
+    if(scroll < window.innerHeight){
+
+        hero.style.transform =
+            `translateY(${scroll * .12}px)`;
+
+        hero.style.opacity =
+            1 - (scroll / 900);
+
+    }
+
+});
+
+
+</script>
 
 </body>
 </html>
